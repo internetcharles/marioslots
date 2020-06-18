@@ -38,5 +38,18 @@ public class GameManager : MonoBehaviour
         {
             Machine.instance.StartSpinning();
         }
+
+        if (Input.GetKeyDown("m"))
+        {
+            int[] matches;
+
+            matches = Machine.instance.FindMatches();
+
+            for (int i = 0; i < Machine.instance.GetNumFaces(); i++)
+            {
+                Debug.Log(matches[i]);
+            }
+
+        }
     }
 }

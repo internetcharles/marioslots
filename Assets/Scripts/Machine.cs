@@ -10,10 +10,16 @@ public class Machine : MonoBehaviour
     public static Machine instance;
 
     public int numSlots;
+
     public float minSlotSpeed;
     public float maxSlotSpeed;
+
     public float slotSlowdownStartTime;
     public float slotSlowdownStartNext;
+
+    public float slotSlowdownInterval;
+    public float slotSlowdownDelta;
+    public float slotSlowestSpinSpeed;
 
     public GameObject slotPrefab;
 
@@ -58,6 +64,11 @@ public class Machine : MonoBehaviour
         return faces.Length;
     }
 
+    public int GetNumSlots()
+    {
+        return numSlots;
+    }
+
     public Face GetFace(int i)
     {
         return faces[i];
@@ -97,6 +108,24 @@ public class Machine : MonoBehaviour
         isSpinning = true;
 
         StartCoroutine(SlotSlowDownTimers(slotSlowdownStartTime, slotSlowdownStartNext));
+    }
+
+    public int[] FindMatches()
+    {
+        int[] faceCountArray;
+
+        faceCountArray = new int[GetNumFaces()];
+
+        for (int i = 0; i < numSlots; i++)
+        {
+            Slot slotScript = slots[i].GetComponent<Slot>();
+
+            //faceCountArray[i] = (int) slotScript.GetFaceType();
+            faceCountArray[(int) slotScript.GetFaceType()]++;
+
+        }
+
+        return faceCountArray;
     }
 
     IEnumerator SlotSlowDownTimers(float slotSlowdownStartTime, float slotSlowdownStartNext) 

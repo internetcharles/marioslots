@@ -92,3 +92,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16ddc54a6eee7a44a1d26efb241c3d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faceType: 5
