@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numSlots: 5
-  minSlotSpeed: 0
-  maxSlotSpeed: 0
+  minSlotSpeed: 5
+  maxSlotSpeed: 8
+  slotSlowdownStartTime: 3
+  slotSlowdownStartNext: 0.5
   slotPrefab: {fileID: 6098418089844966063, guid: c74ee690efc6a7a48b7bed1d55f7e471,
     type: 3}
   faces:

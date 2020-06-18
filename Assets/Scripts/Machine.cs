@@ -12,6 +12,8 @@ public class Machine : MonoBehaviour
     public int numSlots;
     public float minSlotSpeed;
     public float maxSlotSpeed;
+    public float slotSlowdownStartTime;
+    public float slotSlowdownStartNext;
 
     public GameObject slotPrefab;
 
@@ -86,12 +88,31 @@ public class Machine : MonoBehaviour
 
     public void StartSpinning()
     {
+
         for (int i = 0; i < numSlots; i++)
         {
-            slots[i].BroadcastMessage("StartSpinning");
+            slots[i].BroadcastMessage("StartSpinning", Random.Range(minSlotSpeed, maxSlotSpeed));
         }
 
         isSpinning = true;
+
+        StartCoroutine(SlotSlowDownTimers(slotSlowdownStartTime, slotSlowdownStartNext));
+    }
+
+    IEnumerator SlotSlowDownTimers(float slotSlowdownStartTime, float slotSlowdownStartNext) 
+    {
+        yield return new WaitForSeconds(slotSlowdownStartTime);
+
+        for (int i = 0; i < numSlots; i++)
+        {
+            yield return new WaitForSeconds(slotSlowdownStartNext);
+            {
+                slots[i].BroadcastMessage("StopSpinning");
+
+                yield return new WaitForSeconds(slotSlowdownStartNext);
+            }
+        }   
+        yield break;
     }
 
 }
