@@ -68,7 +68,30 @@ public class Machine : MonoBehaviour
         for (int i = 0; i < numSlots; i++)
         {
             slots[i] = Instantiate(slotPrefab) as GameObject;
+
+
+            Slot slotScript = slots[i].GetComponent<Slot>();
+
+            if (slotScript == null)
+            {
+                Debug.Log("No slot script on object");
+            }
+            else
+            {
+                slotScript.Init(i);
+            }
+
         }
+    }
+
+    public void StartSpinning()
+    {
+        for (int i = 0; i < numSlots; i++)
+        {
+            slots[i].BroadcastMessage("StartSpinning");
+        }
+
+        isSpinning = true;
     }
 
 }

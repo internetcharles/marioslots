@@ -22,21 +22,19 @@ public class Slot : MonoBehaviour
         for (int i = 0; i < Machine.instance.GetNumFaces(); i++)
         {
             faces[i] = Instantiate(Machine.instance.GetFace(i).facePrefab) as GameObject;
+
+            faces[i].transform.position += new Vector3((float) slotNumber, i, 0);
+
+            faces[i].transform.parent = this.gameObject.transform;
         }
 
     }
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    public void StartSpinning()
     {
-        
+        Debug.Log("Slot received spinning message");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
 }

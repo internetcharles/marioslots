@@ -52,15 +52,18 @@ MonoBehaviour:
   - faceType: 1
     facePrefab: {fileID: 8500109061931700321, guid: 6c6b347ac96f1e1478b348f17fcaa185,
       type: 3}
-  - faceType: 1
-    facePrefab: {fileID: 8500109061931700321, guid: 6c6b347ac96f1e1478b348f17fcaa185,
+  - faceType: 2
+    facePrefab: {fileID: 297441615833468579, guid: 4edbafd4db5219047b2c3f91b4e9570b,
       type: 3}
-  - faceType: 1
-    facePrefab: {fileID: 8500109061931700321, guid: 6c6b347ac96f1e1478b348f17fcaa185,
+  - faceType: 0
+    facePrefab: {fileID: 6084938056424465117, guid: c76d1ae02d99d12498345991db303db9,
       type: 3}
-  - faceType: 1
-    facePrefab: {fileID: 8500109061931700321, guid: 6c6b347ac96f1e1478b348f17fcaa185,
+  - faceType: 3
+    facePrefab: {fileID: 3367297270437631432, guid: d05cf2c01980bfc46ad7f65ba067d0ed,
       type: 3}
-  - faceType: 1
-    facePrefab: {fileID: 8500109061931700321, guid: 6c6b347ac96f1e1478b348f17fcaa185,
+  - faceType: 5
+    facePrefab: {fileID: 9022478772286178737, guid: 2137cb09403adf14fad1b54cff7d3abd,
+      type: 3}
+  - faceType: 4
+    facePrefab: {fileID: 7720631567533779073, guid: f4d1b4945f69e7748b39779fef0f4cdd,
       type: 3}
