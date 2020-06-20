@@ -29,6 +29,9 @@ public class Slot : MonoBehaviour
             faces[i].transform.position += new Vector3((float) slotNumber, i, 0);
 
             faces[i].transform.parent = this.gameObject.transform;
+
+            FaceController faceScript = faces[i].GetComponent<FaceController>();
+            faceScript.SetSlotRef(this);
         }
 
     }
@@ -41,7 +44,7 @@ public class Slot : MonoBehaviour
 
         for(int i = 0; i < Machine.instance.GetNumFaces(); i++)
         {
-            if (faces[i].transform.position.y == CENTER)
+            if (Mathf.Round(faces[i].transform.position.y) == CENTER)
             {
                 faceType = faces[i].GetComponent<FaceController>().GetFaceType();
                 return faceType;
@@ -54,7 +57,17 @@ public class Slot : MonoBehaviour
 
     public void StartSpinning()
     {
-        Debug.Log("Slot received spinning message");
+        isSpinning = true;
+    }
+
+    public void StoppedSpinning()
+    {
+        if (isSpinning)
+        {
+            isSpinning = false;
+
+            Machine.instance.SlotStopped();
+        }
     }
 
 

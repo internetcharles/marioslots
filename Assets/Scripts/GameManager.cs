@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject machinePrefab;
 
+    public Reward[] rewards;
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -50,6 +52,45 @@ public class GameManager : MonoBehaviour
                 Debug.Log(matches[i]);
             }
 
+        }
+    }
+
+    public void ReadyToMatch()
+    {
+        Debug.Log("All slots have stopped spinning. Ready to match!");
+
+        StartCoroutine(Rewards());
+    }
+
+    IEnumerator Rewards()
+    {
+        int[] matches;
+
+        int starCount = 0;
+
+        int multiplier = 0;
+
+        matches = Machine.instance.FindMatches();
+
+        yield return new WaitForSeconds(1);
+
+        for (int i = 0; i < Machine.instance.GetNumFaces(); i++)
+        {
+            foreach (Reward reward in rewards)
+            {
+                if (reward.faceType == (FACE_TYPE) i && reward.reqMatches == matches[i])
+                {
+                    if (reward.faceType != FACE_TYPE.Star)
+                    {
+                        Debug.Log("Matched " + matches[i] + ((FACE_TYPE) i).ToString() + ". " +
+                                  reward.rewardType.ToString() + " " + reward.rewardAmount);
+                    }
+                    else
+                    {
+                        multiplier = reward.rewardAmount;
+                    }
+                } 
+            }
         }
     }
 }

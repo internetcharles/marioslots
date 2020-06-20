@@ -166,6 +166,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machinePrefab: {fileID: 7332202926644742439, guid: 8795610764d6f3b4499aec997867bb14,
     type: 3}
+  rewards:
+  - faceType: 1
+    reqMatches: 2
+    rewardType: 0
+    rewardAmount: 20
+  - faceType: 2
+    reqMatches: 2
+    rewardType: 0
+    rewardAmount: 15
+  - faceType: 3
+    reqMatches: 2
+    rewardType: 0
+    rewardAmount: 5
+  - faceType: 4
+    reqMatches: 2
+    rewardType: 0
+    rewardAmount: 10
+  - faceType: 0
+    reqMatches: 2
+    rewardType: 2
+    rewardAmount: 10
+  - faceType: 5
+    reqMatches: 2
+    rewardType: 1
+    rewardAmount: 5
 --- !u!1001 &2700808844076307919
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,9 +8,12 @@ public class FaceController : MonoBehaviour
 
     public FACE_TYPE faceType;
 
+    private Slot slotRef;
+
     private bool isSpinning = false;
     private bool isStopping = false;
     private bool isSlowing = false;
+
 
     // stop position on y axis
     private float stopPoint = 0;
@@ -61,6 +64,8 @@ public class FaceController : MonoBehaviour
                 isSpinning = false;
                 isStopping = false;
                 stopPoint = 0;
+
+                slotRef.StoppedSpinning();
             }
         }
     }
@@ -86,7 +91,10 @@ public class FaceController : MonoBehaviour
         return (faceType);
     }
 
-
+    public void SetSlotRef(Slot slot)
+    {
+        slotRef = slot;
+    }
 
     IEnumerator SlowSpinOverTime(float interval, float delta)
     {

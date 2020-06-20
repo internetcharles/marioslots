@@ -105,9 +105,21 @@ public class Machine : MonoBehaviour
             slots[i].BroadcastMessage("StartSpinning", Random.Range(minSlotSpeed, maxSlotSpeed));
         }
 
+        slotsSpinning = numSlots;
+
         isSpinning = true;
 
         StartCoroutine(SlotSlowDownTimers(slotSlowdownStartTime, slotSlowdownStartNext));
+    }
+
+    public void SlotStopped()
+    {
+        slotsSpinning--;
+
+        if (slotsSpinning == 0)
+        {
+            GameManager.instance.ReadyToMatch();
+        }
     }
 
     public int[] FindMatches()
@@ -120,9 +132,7 @@ public class Machine : MonoBehaviour
         {
             Slot slotScript = slots[i].GetComponent<Slot>();
 
-            //faceCountArray[i] = (int) slotScript.GetFaceType();
             faceCountArray[(int) slotScript.GetFaceType()]++;
-
         }
 
         return faceCountArray;

@@ -48,8 +48,8 @@ MonoBehaviour:
   maxSlotSpeed: 20
   slotSlowdownStartTime: 1
   slotSlowdownStartNext: 0.5
-  slotSlowdownInterval: 0.3
-  slotSlowdownDelta: 1.13
+  slotSlowdownInterval: 0.06
+  slotSlowdownDelta: 1.01
   slotSlowestSpinSpeed: 1
   slotPrefab: {fileID: 6098418089844966063, guid: c74ee690efc6a7a48b7bed1d55f7e471,
     type: 3}
