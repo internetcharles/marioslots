@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -70,6 +71,8 @@ public class GameManager : MonoBehaviour
 
         int multiplier = 0;
 
+        int rewardTotal = 0;
+
         matches = Machine.instance.FindMatches();
 
         yield return new WaitForSeconds(1);
@@ -82,15 +85,28 @@ public class GameManager : MonoBehaviour
                 {
                     if (reward.faceType != FACE_TYPE.Star)
                     {
+                        if (reward.rewardType == REWARD_TYPE.WinCoins)
+                        {
+                            rewardTotal += reward.rewardAmount;
+                        }
+
                         Debug.Log("Matched " + matches[i] + ((FACE_TYPE) i).ToString() + ". " +
                                   reward.rewardType.ToString() + " " + reward.rewardAmount);
                     }
                     else
                     {
                         multiplier = reward.rewardAmount;
+
+                        starCount = matches[i];
+
                     }
                 } 
             }
+        }
+
+        if (multiplier > 0 && starCount > 0 && rewardTotal > 0)
+        {
+            Debug.Log("Matched " + rewardTotal + " has been multiplied by " + multiplier + " to equal " + (rewardTotal * multiplier));
         }
     }
 }
